@@ -1,0 +1,8 @@
+.custom-color{
+    color: bisque;
+}
+
+.custom-bgcolor{
+    background-image: repeating-linear-gradient(to right,turquoise, turquoise 50%, pink);
+}
+

@@ -1,0 +1,8 @@
+.custom-background{
+    background-image: linear-gradient(to right,#f7adae, #c4c2fc) !important;
+}
+
+*{
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}

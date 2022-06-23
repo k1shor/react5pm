@@ -1,0 +1,13 @@
+.custom-sidebar{
+    background-color: aquamarine;
+    /* height: 200px; */
+    /* width: 200px; */
+}
+ 
+.custom-main{
+    background-color: green;
+}
+
+/* *{
+    padding-left: 0 !important;
+} */
