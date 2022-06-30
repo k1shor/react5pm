@@ -6,17 +6,21 @@ import AddProduct from './components/Pages/AddProduct'
 import AdminDashboard from './components/Pages/AdminDashboard'
 import Blogs from './components/Pages/Blogs'
 import Cart from './components/Pages/Cart'
+import ConfirmOrder from './components/Pages/ConfirmOrder'
 import Contact from './components/Pages/Contact'
 import Deals from './components/Pages/Deals'
 import EmailConfirmation from './components/Pages/EmailConfirmation'
 import ForgetPassword from './components/Pages/ForgetPassword'
 
 import Home from './components/Pages/Home'
+import ProductDetails from './components/Pages/ProductDetails'
 import ResendVerification from './components/Pages/ResendVerification'
 import ResetPassword from './components/Pages/ResetPassword'
+import Shipping from './components/Pages/Shipping'
 import Signin from './components/Pages/Signin'
 import Signup from './components/Pages/Signup'
 import UpdateCategory from './components/Pages/UpdateCategory'
+import UpdateProduct from './components/Pages/UpdateProduct'
 import ViewCategories from './components/Pages/ViewCategories'
 import ViewProducts from './components/Pages/ViewProducts'
 import AdminRoute from './routes/AdminRoute'
@@ -49,11 +53,17 @@ const MyRoutes = () => {
           <Route path='/category/update/:category_id' element={<UpdateCategory/>}/>
           <Route path='/product/add' element={<AddProduct/>}/>
           <Route path='/products' element={<ViewProducts/>}/>
+          <Route path='/product/update/:id' element={<UpdateProduct/>}/>
         </Route>
+
+        <Route path='/product/:id' element={<ProductDetails/>}/>
 
         <Route path='/' element={<PrivateRoute />}>
           <Route path='/cart' element={<Cart />} />
+          <Route path='/confirmorder' element={<ConfirmOrder/>}/>
+          <Route path='/shipping' element={<Shipping/>}/>
         </Route>
+
 
 
       </Routes>

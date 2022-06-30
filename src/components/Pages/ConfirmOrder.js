@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import Nav from '../Layout/Nav';
 import Footer from '../Layout/Footer';
-import { useSelector, useDispatch } from 'react-redux'
-import { addItemToCart, removeItemFromCart } from '../../reducer/actions/cartActions';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
+import Checkout_progress from '../Checkout_progress';
 
-const Cart = () => {
+
+const ConfirmOrder = () => {
     // const cart_items = JSON.parse(localStorage.getItem("cart_items"))
 
     const cart_items = useSelector(state => state.cart.cart_items)
     const [order_quantity, setOrderQuantity] = useState(0)
     const [order_total, setOrderTotal] = useState(0)
 
-    const dispatch = useDispatch()
 
     useEffect(() => {
         if(cart_items.length>0){
@@ -31,73 +29,44 @@ const Cart = () => {
         }
     }, [cart_items])
 
-    const removeFromCart = (id) => {
-        dispatch(removeItemFromCart(id))
-        toast.error("item removed from cart")
-    }
-
-    const increaseQuantity = (id, quantity, stock) => {
-        let new_quantity = quantity + 1
-        if(new_quantity>stock){
-            toast.error('cannot increase number')
-            return
-        }
-        console.log(id, new_quantity)
-        dispatch(addItemToCart(id, new_quantity))
-        toast.success('item quantity increased')
-    }
-
-    const decreaseQuantity = (id, quantity) => {
-        let new_quantity = quantity - 1
-        if(new_quantity===0){
-            toast.error("cannot reduce number, remove from cart instead")
-            return
-        }
-        dispatch(addItemToCart(id, new_quantity))
-        toast.success("item quantity reduced")
-
-    }
-
+   
     return (
         <>
-        <ToastContainer theme='colored' position='top-right'/>
             <Nav />
+            <Checkout_progress ConfirmOrder/>
             <div className='d-flex'>
                 <div className='container mx-auto' style={{ width: '65%' }}>
                    {cart_items.length> 0 ?
                     <table className="table my-5 shadow-lg table-striped table-hover text-center align-middle table-bordered ">
                         <thead>
                             <tr>
-                                <th scope="col">SNO</th>
-                                <th scope="col">Product Image</th>
-                                <th scope="col">Product</th>
+                                <th>SNO</th>
+                                <th>Product Image</th>
+                                <th>Product</th>
+                                <th>Unit Price</th>
                                 <th>Number</th>
-                                <th scope="col">Action</th>
+                                <th>Total Price</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 cart_items.map((item, i) => {
                                     return <tr key={i}>
-                                        <td width={'5%'}>{i + 1}</td>
-                                        <td width={'40%'}><img src={`http://localhost:5000/${item.image}`} alt={item.name} style={{ height: 200 }} /></td>
-                                        <td width={'30%'}>
+                                        <td>{i + 1}</td>
+                                        <td><img src={`http://localhost:5000/${item.image}`} alt={item.name} style={{ height: 200 }} /></td>
+                                        <td>
                                             <h4>{item.name}</h4>
+                                            </td>
+                                            <td>
                                             <h5>Rs. {item.price}</h5>
                                         </td>
                                         <td>
-                                            <div className='d-flex'>
-                                                <button className='btn btn-warning' onClick={()=>decreaseQuantity(item.product, item.quantity)}>-</button>
-                                                <input type={'text'} value={item.quantity} readOnly className='form-control text-center' />
-                                                <button className='btn btn-success' onClick={()=>increaseQuantity(item.product, item.quantity, item.stock)}>+</button>
-
-                                            </div>
+                                                <h5>{item.quantity}</h5>
                                         </td>
-                                        <td width={'5%'}>
-                                            <button className='btn btn-danger' onClick={()=>removeFromCart(item.product)}>
-                                            <i class="bi bi-trash3"></i>
-                                            </button>
+                                        <td>
+.                                            {item.quantity*item.price}
                                         </td>
+                                       
                                     </tr>
                                 })
                             }
@@ -114,8 +83,7 @@ const Cart = () => {
                         <p>Order Items: <br/><b className='fs-3'> {order_quantity}</b></p>
                         <p>Total Order Price: <br/><b className='fs-3'>Rs. {order_total}</b> </p>
                         <hr className='my-2' />
-                        <Link to='/confirmorder'><button className='btn btn-warning'>Confirm Order</button>
-                        </Link>
+                        <Link to='/shipping'><button className='btn btn-warning'>Proceed to Shipping</button></Link>
 
                     </div>
                 </div>
@@ -125,4 +93,4 @@ const Cart = () => {
     )
 }
 
-export default Cart
+export default ConfirmOrder

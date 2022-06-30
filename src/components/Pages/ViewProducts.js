@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { viewProducts } from '../../api/productApi'
 import AdminSidebar from '../Layout/AdminSidebar'
 import Footer from '../Layout/Footer'
@@ -56,7 +57,9 @@ const ViewProducts = () => {
                                                 </td>
                                                 <td>{product.count_in_stock}</td>
                                                 <td>
+                                                <Link to={`/product/${product._id}`}>
                                                     <button className='btn btn-info'>View Details</button>
+                                                    </Link>
                                                 </td>
                                             </tr>
                                         })

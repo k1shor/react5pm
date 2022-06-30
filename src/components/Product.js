@@ -1,90 +1,22 @@
 import React from 'react'
 import './product.css'
+import { Link } from 'react-router-dom'
 
-const Product = () => {
+const Product = ({ product }) => {
     return (
         <>
-            <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 mt-5">
-                <div className="col">
-                    <div className="card mb-2">
-                        <img src="./images/img1.jpg" className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Card title</h5>
-                            <button className='btn btn-success'>View Details</button>
-                        </div>
+            <div className="col mb-4">
+                <div className="card shadow-lg">
+                    <img src={`http://localhost:5000/${product.product_image}`} className="card-img-top" alt={product.product_name} />
+                    <div className="card-body text-center">
+                        <h5 className="card-title">{product.product_name}</h5>
+                        <h5 className="card-title">{product.product_price}</h5>
+                        <p className="text-truncate">{product.product_description}</p>
+                        <Link to={`/product/${product._id}`}>
+                            <button className='btn btn-warning'>View Details</button>
+                        </Link>
                     </div>
                 </div>
-
-                <div className="col">
-                    <div className="card shadow-lg mb-2">
-                        <img src="./images/img2.jpg" className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Card title</h5>
-                            <button className='btn btn-success'>View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <div className="card shadow-lg mb-2">
-                        <img src="./images/img3.jpg" className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Card title</h5>
-                            <button className='btn btn-success'>View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <div className="card shadow-lg mb-2">
-                        <img src="./images/img4.jpg" className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Card title</h5>
-                            <button className='btn btn-success'>View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <div className="card shadow-lg mb-2">
-                        <img src="./images/img5.jpg" className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Card title</h5>
-                            <button className='btn btn-success'>View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <div className="card shadow-lg mb-2">
-                        <img src="./images/img6.jpg" className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Card title</h5>
-                            <button className='btn btn-success'>View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <div className="card shadow-lg mb-2">
-                        <img src="./images/img7.jpg" className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Card title</h5>
-                            <button className='btn btn-success'>View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <div className="card shadow-lg mb-2">
-                        <img src="./images/img8.jpg" className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Card title</h5>
-                            <button className='btn btn-success'>View Details</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </>
     )

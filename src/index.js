@@ -5,12 +5,14 @@ import reportWebVitals from './reportWebVitals';
 import MyRoutes from './MyRoutes';
 import Home from './components/Pages/Home';
 import Signin from './components/Pages/Signin';
+import { Provider } from 'react-redux';
+import store from './reducer/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    
+    <Provider store = {store}>
     <MyRoutes/>
-    
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
