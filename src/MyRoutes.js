@@ -13,6 +13,7 @@ import EmailConfirmation from './components/Pages/EmailConfirmation'
 import ForgetPassword from './components/Pages/ForgetPassword'
 
 import Home from './components/Pages/Home'
+import PaymentElement from './components/Pages/PaymentElement'
 import ProductDetails from './components/Pages/ProductDetails'
 import ResendVerification from './components/Pages/ResendVerification'
 import ResetPassword from './components/Pages/ResetPassword'
@@ -62,6 +63,7 @@ const MyRoutes = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/confirmorder' element={<ConfirmOrder/>}/>
           <Route path='/shipping' element={<Shipping/>}/>
+          <Route path='/payment' element={<PaymentElement/>}/>
         </Route>
 
 
