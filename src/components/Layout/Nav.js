@@ -61,7 +61,7 @@ const Nav = () => {
                             user && user.role === 0 &&
                             // normal user
                             // profile icon
-                            <Link to="#"><i class="bi bi-person-circle text-white fs-3"></i></Link>
+                            <Link to="/userprofile"><i class="bi bi-person-circle text-white fs-3"></i></Link>
                         }
                         {
                             user && user.role === 1 &&

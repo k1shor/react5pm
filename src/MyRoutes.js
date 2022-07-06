@@ -13,6 +13,7 @@ import EmailConfirmation from './components/Pages/EmailConfirmation'
 import ForgetPassword from './components/Pages/ForgetPassword'
 
 import Home from './components/Pages/Home'
+import OrderDetails from './components/Pages/OrderDetails'
 import PaymentElement from './components/Pages/PaymentElement'
 import ProductDetails from './components/Pages/ProductDetails'
 import ResendVerification from './components/Pages/ResendVerification'
@@ -22,6 +23,7 @@ import Signin from './components/Pages/Signin'
 import Signup from './components/Pages/Signup'
 import UpdateCategory from './components/Pages/UpdateCategory'
 import UpdateProduct from './components/Pages/UpdateProduct'
+import UserProfile from './components/Pages/UserProfile'
 import ViewCategories from './components/Pages/ViewCategories'
 import ViewProducts from './components/Pages/ViewProducts'
 import AdminRoute from './routes/AdminRoute'
@@ -64,6 +66,8 @@ const MyRoutes = () => {
           <Route path='/confirmorder' element={<ConfirmOrder/>}/>
           <Route path='/shipping' element={<Shipping/>}/>
           <Route path='/payment' element={<PaymentElement/>}/>
+          <Route path= '/userprofile' element={<UserProfile/>}/>
+          <Route path='/order/:orderId' element={<OrderDetails/>}/>
         </Route>
 
 

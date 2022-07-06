@@ -31,7 +31,7 @@ const Payment = () => {
         }
     }
 
-    let orderInfo = JSON.parse(sessionStorage.getItem('orderInfo'))
+    // let orderInfo = JSON.parse(sessionStorage.getItem('orderInfo'))
     const { cart_items, shipping_info } = useSelector(state => state.cart)
 
 
@@ -45,14 +45,15 @@ const Payment = () => {
     const order = {
         orderItems: cart_items,
         shipping_address: shipping_info.shipping_address,
+        opt_shipping_address: shipping_info.opt_shipping_address,
         city: shipping_info.city,
         country: shipping_info.country,
-        zipcode: 12345,
+        zipcode: shipping_info.zipcode,
         phone: shipping_info.phone,
         user: user._id
     }
 
-    console.log(order)
+    // console.log(order)
     // const paymentData = { amount : orderInfo*100    }
     const paymentData = { amount: order_total*100 }
 

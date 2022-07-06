@@ -45,13 +45,14 @@ export const myOrders=()=>async(dispatch, getState)=>{
     
     try{
         dispatch({type:MY_ORDER_REQUEST})
+
         const config={
             headers:{
                 "Content-Type":"application/json",
                 Authorization: `Bearer ${token}`
             }
         }
-        const {data} = await axios.post(`${API}/userorders/${user._id}`)
+        const {data} = await axios.get(`${API}/userorders/${user._id}`)
         
         console.log(data)
         dispatch({
@@ -87,7 +88,7 @@ export const orderDetails=(id)=> async(dispatch) =>{
             }
 
         }
-        const {data} = await axios.post(`${API}/orderdetails/${id}`,config)
+        const {data} = await axios.get(`${API}/orderdetails/${id}`,config)
 
         console.log(data)
         dispatch({
